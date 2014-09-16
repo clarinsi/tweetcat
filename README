@@ -12,6 +12,6 @@ Parameters of the tool are the following:
 	- ACCESS_TOKEN=''
 	- ACCESS_TOKEN_SECRET=''
 
-The only dependency of the tool is tweepy (https://github.com/tweepy/tweepy).
+The only dependency of the tool is tweepy>=2.1 (https://github.com/tweepy/tweepy).
 
-An extended abstract has been submitted to LREC 2014. If accepted, this will be the paper to cite if you use the tool.
+If you are using the tool, please cite http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic14-tweetcat.txt.
