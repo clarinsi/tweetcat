@@ -1,4 +1,4 @@
-# The harvesting module of TweetCaT
+# The harvesting module of TweetCat
 
 Requirements: python2.7*, tweepy3.5.0 (https://github.com/tweepy/tweepy), langid.py (https://github.com/saffsd/langid.py)
 

@@ -1,8 +1,8 @@
 # you can obtain the four values required below by registering your app at https://apps.twitter.com
-CONSUMER_KEY='Otp4damfxH44Zcc6CuqHMfx2Q'
-CONSUMER_SECRET='q0Ujg3552vDezkhj1oavOg1gMzYCfIZGaYtHPFRBxz5IHoqTYB'
-ACCESS_TOKEN='751041562977693696-CNrY13yzMPBRzZOaQde8UDFtfAaxijY'
-ACCESS_TOKEN_SECRET='4qyTihm5MDShSvKMtnZWN57KPoxE9WImh9mp4v0r8mSmj'
+CONSUMER_KEY=''
+CONSUMER_SECRET=''
+ACCESS_TOKEN=''
+ACCESS_TOKEN_SECRET=''
 
 BATCH_SIZE=10 # number of tweets written to disk together in a file
 
