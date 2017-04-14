@@ -9,7 +9,7 @@ Harvesting can be performed in two different modes:
 
 The collection process should be run in the background, like ```nohup python harvesting.py hbs &```. The first argument of the script (```hbs```)is the project name. The project configuration is read from the file of the same name, with the ```.py``` extension.
 
-For setting up any mode, you are supposed to make a copy of the exemplary ```hbs.py``` configuration file and name it after your project (naming restrictions are the same as for Python variables).
+For setting up any mode, you are supposed to make a copy of the exemplary ```hbs.py``` configuration file and name it after your project (naming restrictions are the same as for Python variables). There is another exemplary project, ```us_geo```, which examplifies harvesting in the GEO mode.
 
 In the configuration file you first define your API credentials (obtainable by registering your app at https://apps.twitter.com) and which mode you will be using.
 

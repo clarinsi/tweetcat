@@ -4,12 +4,12 @@ CONSUMER_SECRET=''
 ACCESS_TOKEN=''
 ACCESS_TOKEN_SECRET=''
 
-BATCH_SIZE=10 # number of tweets written to disk together in a file
+BATCH_SIZE=10000 # number of tweets written to disk together in a file
 
 MODE='GEO'
 #MODE='LANG'
 
-# define if MODE is GEO
+# define if MODE is GEO, ignore if MODE is LANG
 # lower left corner, can be obtained from http://www.latlong.net
 MINLAT=22
 MINLON=-125
@@ -23,6 +23,6 @@ LANGID_GEO=['en','es']
 # will not be used during the collection process, but at its end if filter_users.py is run
 COUNTRIES=['US']
 
-# define if MODE is LANG
-SEEDS='seeds.hrsr'
+# define if MODE is LANG, ignore if MODE is GEO
+SEEDS='seeds.hbs'
 LANGID_LANG=['hr','sr','bs'] # language codes of interest, list available from https://github.com/saffsd/langid.py
