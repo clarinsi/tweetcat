@@ -4,7 +4,7 @@ CONSUMER_SECRET=''
 ACCESS_TOKEN=''
 ACCESS_TOKEN_SECRET=''
 
-BATCH_SIZE=10000 # number of tweets written to disk together in a file
+BATCH_SIZE=1000 # number of tweets written to disk together in a file
 
 MODE='GEO'
 #MODE='LANG'
@@ -18,7 +18,7 @@ MAXLAT=50
 MAXLON=-66
 # language codes of interest, list available from https://github.com/saffsd/langid.py
 # will not be used during the collection process, but at its end if filter_users.py is run
-LANGID_GEO=['en','es']
+LANGID_GEO=[]
 # country codes of interest, https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 # will not be used during the collection process, but at its end if filter_users.py is run
 COUNTRIES=['US']

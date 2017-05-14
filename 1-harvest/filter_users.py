@@ -37,5 +37,4 @@ if __name__=='__main__':
       continue
     if classify(' '.join([space_re.sub(' ',remove_specific_re.sub(' ',status['text'])).strip() for status in users[user]]))[0] not in LANGID_GEO:
       continue
-    gzip.open(os.path.join(PROJECT+'.filter',user),'w').write(json.dumps(users[user]))
-  
+    gzip.open(os.path.join(PROJECT+'.filter',user+'.gz'),'w').write(json.dumps(users[user]))
