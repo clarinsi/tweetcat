@@ -79,7 +79,7 @@ def write_tweets(tweets,empty=False):
   while len(tweets)>=BATCH_SIZE or (empty and len(tweets)>0):
     batch_no+=1
     batch=[e._json for e in tweets[:BATCH_SIZE]]
-    output=gzip.open(PROJECT+'/'+datetime.now().isoformat()[:10]+'_'+str(batch[0]['id']),'w').write(json.dumps(batch,indent=1))
+    output=gzip.open(PROJECT+'/'+datetime.now().isoformat()[:10]+'_'+str(batch[0]['id'])+'.gz','w').write(json.dumps(batch,indent=1))
     tweets=tweets[BATCH_SIZE:]
   if batch_no>0:
     log.write(datetime.now().isoformat()+'\tNumber of batches of tweets written: '+str(batch_no)+'\n')
@@ -198,7 +198,6 @@ class StdOutListener(StreamListener):
     self.e420=60
     added=False
     if status.coordinates!=None:
-      print status.text
       self.tweets.append(status)
       self.no_tweets+=1
       if self.no_tweets%BATCH_SIZE==0:

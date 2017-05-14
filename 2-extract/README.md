@@ -8,8 +8,6 @@ Similar to the harvesting module, setting the extraction procedure should be per
 
 Running the variable extraction process can performed with ```python extraction.py hbs```. 
 
-The collection process should be run in the background, like ```nohup python harvesting.py hbs &```. The first argument of the script (```hbs```)is the project name. The project configuration is read from the file of the same name, with the ```.py``` extension.
-
 The variable extraction process is run on two levels:
 
 1. the level of the Status object, enabling extracting tweet metadata such as the text of the tweet, number of replies of the tweet etc.; there is an exemplary Status object in the ```hbs.py``` file available (```EXTRACTION_STATUS```)
