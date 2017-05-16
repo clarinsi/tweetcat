@@ -27,7 +27,8 @@ def lang_id(timeline):
 def search(term):
   try:
     result=api.search(term)
-  except:
+  except Exception e:
+    log.write(datetime.now().isoformat()+'\t'+str(e)+'\n')
     return []
   return result
 
