@@ -137,6 +137,7 @@ def lang_mode():
                   tweets.extend(fetched_timeline)
                   no_tweets+=len(fetched_timeline)
                   tweets=write_tweets(tweets)
+                  log.flush()
             for friend in friends(hit.author):
               if friend.screen_name not in user_index:
                 fetched_timeline=new_user_timeline(friend.screen_name)
@@ -150,6 +151,7 @@ def lang_mode():
                   tweets.extend(fetched_timeline)
                   no_tweets+=len(fetched_timeline)
                   tweets=write_tweets(tweets)
+                  log.flush()
         if open(PROJECT+'.busy').read()=='stop':
           tweets=write_tweets(tweets,True)
           serialize()
