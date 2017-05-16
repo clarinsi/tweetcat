@@ -116,14 +116,17 @@ def lang_mode():
           fetched_timeline=new_user_timeline(hit.author.screen_name)
           if fetched_timeline is False:
             log.write(datetime.now().isoformat()+'\tNew user '+hit.author.screen_name+' found by searching did not pass the language filter.\n')
+            log.flush()
           elif fetched_timeline is None:
             log.write(datetime.now().isoformat()+'\tNew user '+hit.author.screen_name+' found by searching could not be retrieved. He probably has a protected account.\n')
+            log.flush()
           else:
             log.write(datetime.now().isoformat()+'\tFound new user by searching: '+hit.author.screen_name+'\n')
             user_index[hit.author.screen_name]=fetched_timeline[-1].id
             tweets.extend(fetched_timeline)
             no_tweets+=len(fetched_timeline)
             tweets=write_tweets(tweets)
+            log.flush()
             for follower in followers(hit.author):
               if follower.screen_name not in user_index:
                 fetched_timeline=new_user_timeline(follower.screen_name)
