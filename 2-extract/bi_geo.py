@@ -19,13 +19,6 @@ MAX_REPETITIONS=2
 # existing definition shoud be reasonable for most space-segmented languages
 TOKENS=re.compile(r'#\w+|@\w|https?://[\w/_.-]+|\w+',re.UNICODE)
 
-import re
-emoji_pattern=re.compile(u'('
-    u'\ud83c[\udf00-\udfff]|'
-        u'\ud83d[\udc00-\ude4f\ude80-\udeff]|'
-            u'[\u2600-\u26FF\u2700-\u27BF])+',
-                re.UNICODE)
-
 ### DEFINITION OF VARIABLES TO BE EXTRACTED ###
 # pairs of arguments from Status objects to be extracted and functions to be applied, None for lambda x:x
 # an example of a Status object can be found at the end of this file
@@ -33,12 +26,11 @@ EXTRACTION_STATUS=[
                    ("['created_at']",lambda x:x.split(':')[0][-2:]), # hour the tweet was published
                    ("['lang']",None), # language predicted by Twitter
                    ("['source']",None),
+                   ("['user']['followers_count']",lambda x:str(x)),
+                   ("['user']['created_at']",lambda x:str(int(x[-4:])>2010)),
                    ("['entities']['hashtags']",lambda x:str(len(x))),
                    ("['entities']['urls']",lambda x:str(len(x))),
-                   #("['text']",lambda x:str(x.startswith("I'm at") or '#job' in x or '#Job' in x)),
                    ("['text']",lambda x:str(len(x))), # length of a tweet in characters
-                   ("['text']",lambda x:str(len(emoji_pattern.findall(x)))),
-                   ("['text']",lambda x:str(len(emoji_pattern.findall(x))>0)),
                   ]
 
 # pairs of function names and arguments / resources to be run on the tweet text
@@ -47,6 +39,7 @@ EXTRACTION_TEXT=[
 
 # same as previous, but to be run on lowercased text
 EXTRACTION_LOWER=[
+                  ('lexicon_choice','en_sc'),
                  ]
 
 # same as previous, but to be run on normalised text

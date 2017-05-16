@@ -72,6 +72,8 @@ if __name__=='__main__':
   csv_out=csv.writer(out)
   num=0
   for file in os.listdir(PATH):
+    if not file.endswith('.gz'):
+      continue
     for status in json.load(gzip.open(os.path.join(PATH,file))):
       num+=1
       if num%10000==0:
@@ -100,4 +102,5 @@ if __name__=='__main__':
         if len(set(entry[6:]))<2 and 'NA' in entry[6:]:
           continue
       csv_out.writerow(entry)
+  print 'Processed all together',num
   out.close()
