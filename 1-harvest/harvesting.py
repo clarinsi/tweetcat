@@ -29,6 +29,7 @@ def search(term):
     result=api.search(term)
   except Exception e:
     log.write(datetime.now().isoformat()+'\t'+str(e)+'\n')
+    log.flush()
     return []
   return result
 
