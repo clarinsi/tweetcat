@@ -1,13 +1,13 @@
 #read the data
-csv<-"../2-extraction/hbs-twitter.tsv"
-tw<-read.csv(csv,sep="\t",quote="",header=F)
+csv<-"../2-extraction/hbs.csv"
+tw<-read.csv(csv,sep=",",header=F)
 
 #print number of instances
 print(length(tw[,1]))
 
 #remove noise marked during the variable extraction process
-tw<-tw[tw[,15]!="noise"]
-tw[,15]<-NULL
+tw<-tw[tw[,16]!="noise"]
+tw[,16]<-NULL
 
 #define lon column
 lonidx<-3
@@ -16,24 +16,10 @@ lonidx<-3
 latidx<-4
 
 #define text column
-textidx<-5
+textidx<-6
 
 #define linguistic columns
 cols<-7:length(tw[1,])
-
-#df with only the linguistic info
-tw.attr<-tw[,cols]
-
-#calculating the number of NAs per line
-tw.attr.na<-apply(tw.attr, MARGIN = 1, FUN = function(x) length(x[is.na(x)]) )
-
-#tweets with no linguistic information are filtered
-tw<-tw[tw.attr.na<length(cols),]
-rm(tw.attr)
-rm(tw.attr.na)
-
-#print number of instances surviving the removal of instances without any linguistic information
-print(length(tw[,1]))
 
 #summarise
 summary(tw[,cols])

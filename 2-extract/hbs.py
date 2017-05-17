@@ -23,13 +23,13 @@ TOKENS=re.compile(r'#\w+|@\w|https?://[\w/_.-]+|\w+',re.UNICODE)
 # pairs of arguments from Status objects to be extracted and functions to be applied, None for lambda x:x
 # an example of a Status object can be found at the end of this file
 EXTRACTION_STATUS=[
-                   #("['created_at']",lambda x:x[-4:]), # year the tweet was published
                    ("['lang']",None), # language predicted by Twitter
+                   ("['created_at']",lambda x:x[-4:]), # year the tweet was published
+                   ("['text']",lambda x:str(len(x))), # length of a tweet in characters
                   ]
 
 # pairs of function names and arguments / resources to be run on the tweet text
 EXTRACTION_TEXT=[
-                 #("['text']",lambda x:len(x)), # length of a tweet in characters
                 ]
 
 # same as previous, but to be run on lowercased text

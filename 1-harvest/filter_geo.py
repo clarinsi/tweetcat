@@ -14,6 +14,10 @@ if __name__=='__main__':
     sys.stderr.write('There is no configuration file '+PROJECT+'.py for project '+PROJECT+'\n')
     sys.exit(1)
   exec('from '+PROJECT+' import *')
+  if os.path.exists(PROJECT+'.filter'):
+    sys.stderr.write('The folder '+PROJECT+'.filter already exists. Please remove it before you proceed.\n')
+    sys.exit(1)
+  os.makedirs(PROJECT+'.filter')
   users={}
   num=0
   for file in os.listdir(PROJECT):
@@ -31,14 +35,12 @@ if __name__=='__main__':
         users[user]=[]
       users[user].append(status)
   print 'Read all together',num
-  os.makedirs(PROJECT+'.filter')
   num=0
   print 'Writing down started'
   for user in users:
-    if len(LANGID_GEO)==0:
-      continue
-    if classify(' '.join([space_re.sub(' ',remove_specific_re.sub(' ',status['text'])).strip() for status in users[user]]))[0] not in LANGID_GEO:
-      continue
+    if len(LANGID_GEO)!=0:
+      if classify(' '.join([space_re.sub(' ',remove_specific_re.sub(' ',status['text'])).strip() for status in users[user]]))[0] not in LANGID_GEO:
+        continue
     num+=len(users[user])
     gzip.open(os.path.join(PROJECT+'.filter',user+'.gz'),'w').write(json.dumps(users[user]))
   print 'Wrote all together',num
