@@ -113,6 +113,8 @@ def lang_mode():
   while True:
     # iterating through seed words and searching for users
     for seed in seedw:
+      log.write(datetime.now().isoformat()+'\tSeed term used for search: '+seed+'\n')
+      log.flush()
       for hit in search(seed):
         if hit.author.screen_name not in user_index:
           fetched_timeline=new_user_timeline(hit.author.screen_name)
