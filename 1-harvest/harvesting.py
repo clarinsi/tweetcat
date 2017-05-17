@@ -21,7 +21,7 @@ def clean(timeline):
 def lang_id(timeline):
   timeline=clean(timeline)
   lang=langid.classify(timeline)[0]
-  log.write(datetime.now().isoformat()+'\t'+repr(timeline[:200])+' identified as '+lang+'\n')
+  log.write(datetime.now().isoformat()+'\tIdentified as '+lang+': '+repr(timeline[:200])+'\n')
   return lang in LANGID_LANG
 
 def search(term):
@@ -113,7 +113,7 @@ def lang_mode():
   while True:
     # iterating through seed words and searching for users
     for seed in seedw:
-      log.write(datetime.now().isoformat()+'\tSeed term used for search: '+seed+'\n')
+      log.write(datetime.now().isoformat()+'\tSeed term used for search: '+seed.encode('utf8')+'\n')
       log.flush()
       for hit in search(seed):
         if hit.author.screen_name not in user_index:
