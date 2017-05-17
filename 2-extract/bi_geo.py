@@ -26,11 +26,11 @@ EXTRACTION_STATUS=[
                    ("['created_at']",lambda x:x.split(':')[0][-2:]), # hour the tweet was published
                    ("['lang']",None), # language predicted by Twitter
                    ("['source']",None),
-                   ("['user']['followers_count']",lambda x:str(x)),
-                   ("['user']['created_at']",lambda x:str(int(x[-4:])>2010)),
+                   ("['user']['created_at']",lambda x:str(int(x[-4:])>2010)),# whether the account was created after 2010
                    ("['entities']['hashtags']",lambda x:str(len(x))),
                    ("['entities']['urls']",lambda x:str(len(x))),
                    ("['text']",lambda x:str(len(x))), # length of a tweet in characters
+                   ("['user']['followers_count']",lambda x:str(x)), # user follower count
                   ]
 
 # pairs of function names and arguments / resources to be run on the tweet text
@@ -39,7 +39,6 @@ EXTRACTION_TEXT=[
 
 # same as previous, but to be run on lowercased text
 EXTRACTION_LOWER=[
-                  ('lexicon_choice','en_sc'),
                  ]
 
 # same as previous, but to be run on normalised text
